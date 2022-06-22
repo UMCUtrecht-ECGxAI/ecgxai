@@ -1,0 +1,35 @@
+paths:
+  raw_data: "/raw_data/umcu_median"
+  checkpoints: "/training/factorecg/vae"
+  training_labels: "/training/factorecg/all_train.csv"
+  validation_labels: "/training/factorecg/all_val.csv"
+  pretrain_checkpoint: ~
+training:
+  learning_rate: 0.001
+  batch_size: 128
+  epochs: 50
+  pretrain: false
+  tags:
+    - Test run
+  project_name: UMCUtrecht/FactorECG
+encoder:
+  in_channels: 12
+  channels: 128
+  depth: 7
+  reduced_size: 64
+  out_channels: 32
+  kernel_size: 5
+  dropout: 0.3
+  softplus_eps: 1.0e-4
+  sd_output: true
+decoder:
+  k: 32
+  width: 600
+  in_channels: 64
+  channels: 128
+  depth: 7
+  out_channels: 12
+  kernel_size: 5
+  gaussian_out: true
+  softplus_eps: 1.0e-4
+  dropout: 0.
