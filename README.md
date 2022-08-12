@@ -3,7 +3,7 @@
 # ECGxAI: Explainable AI for the electrocardiogram     
 
 [![CausalCNN](https://img.shields.io/badge/conference-CausalCNN-blue.svg)](https://moody-challenge.physionet.org/2020/papers/253.pdf)
-[![FactorECG](https://img.shields.io/badge/preprint-FactorECG-red.svg)](https://www.medrxiv.org/content/10.1101/2022.01.04.22268759v1)
+[![FactorECG](https://img.shields.io/badge/preprint-FactorECG-red.svg)](https://academic.oup.com/ehjdh/advance-article/doi/10.1093/ehjdh/ztac038/6649795?searchresult=1)
 [![DoubleResidual](https://img.shields.io/badge/conference-qLST-blue.svg)](https://arxiv.org/pdf/2111.07386.pdf)
 [![PLN](https://img.shields.io/badge/paper-PLN-purple.svg)](https://www.ahajournals.org/doi/full/10.1161/CIRCEP.120.009056)
    
@@ -75,14 +75,17 @@ keywords = {}
 
 #### FactorECG and the explainable pipeline for interpretation of ECGs
 ```
-@article{van de Leur2022.01.04.22268759, 
-year = {2022}, 
-title = {{Inherently explainable deep neural network-based interpretation of electrocardiograms using variational auto-encoders}}, 
-author = {Leur, Rutger R. van de and Bos, Max N. and Taha, Karim and Sammani, Arjan and Duijvenboden, Stefan van and Lambiase, Pier D. and Hassink, Rutger J. and Harst, Pim van der and Doevendans, Pieter A. and Gupta, Deepak K. and Es, René van}, 
-journal = {medRxiv}, 
-doi = {10.1101/2022.01.04.22268759}, 
-eprint = {https://www.medrxiv.org/content/early/2022/01/05/2022.01.04.22268759.full.pdf}, 
-url = {https://www.medrxiv.org/content/early/2022/01/05/2022.01.04.22268759}, 
-keywords = {}
+@article{10.1093/ehjdh/ztac038,
+    author = {van de Leur, Rutger R and Bos, Max N and Taha, Karim and Sammani, Arjan and Yeung, Ming Wai and van Duijvenboden, Stefan and Lambiase, Pier D and Hassink, Rutger J and van der Harst, Pim and Doevendans, Pieter A and Gupta, Deepak K and van Es, René},
+    title = "{Improving explainability of deep neural network-based electrocardiogram interpretation using variational auto-encoders}",
+    journal = {European Heart Journal - Digital Health},
+    year = {2022},
+    month = {07},
+    abstract = "{Deep neural networks (DNNs) perform excellently in interpreting electrocardiograms (ECGs), both for conventional ECG interpretation and for novel applications such as detection of reduced ejection fraction (EF). Despite these promising developments, implementation is hampered by the lack of trustworthy techniques to explain the algorithms to clinicians. Especially, currently employed heatmap-based methods have shown to be inaccurate.We present a novel pipeline consisting of a variational auto-encoder (VAE) to learn the underlying factors of variation of the median beat ECG morphology (the FactorECG), which are subsequently used in common and interpretable prediction models. As the ECG factors can be made explainable by generating and visualizing ECGs on both the model and individual level, the pipeline provides improved explainability over heatmap-based methods. By training on a database with 1.1 million ECGs, the VAE can compress the ECG into 21 generative ECG factors, most of which are associated with physiologically valid underlying processes. Performance of the explainable pipeline was similar to ‘black box’ DNNs in conventional ECG interpretation [area under the receiver operating curve (AUROC) 0.94 vs. 0.96], detection of reduced EF (AUROC 0.90 vs. 0.91), and prediction of 1-year mortality (AUROC 0.76 vs. 0.75). Contrary to the ‘black box’ DNNs, our pipeline provided explainability on which morphological ECG changes were important for prediction. Results were confirmed in a population-based external validation dataset.Future studies on DNNs for ECGs should employ pipelines that are explainable to facilitate clinical implementation by gaining confidence in artificial intelligence and making it possible to identify biased models.}",
+    issn = {2634-3916},
+    doi = {10.1093/ehjdh/ztac038},
+    url = {https://doi.org/10.1093/ehjdh/ztac038},
+    note = {ztac038},
+    eprint = {https://academic.oup.com/ehjdh/advance-article-pdf/doi/10.1093/ehjdh/ztac038/45322463/ztac038.pdf},
 }
 ```   
