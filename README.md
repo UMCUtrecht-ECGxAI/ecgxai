@@ -3,7 +3,7 @@
 # ECGxAI: Explainable AI for the electrocardiogram     
 
 [![CausalCNN](https://img.shields.io/badge/conference-CausalCNN-blue.svg)](https://moody-challenge.physionet.org/2020/papers/253.pdf)
-[![FactorECG](https://img.shields.io/badge/preprint-FactorECG-red.svg)](https://academic.oup.com/ehjdh/advance-article/doi/10.1093/ehjdh/ztac038/6649795?searchresult=1)
+[![FactorECG](https://img.shields.io/badge/paper-FactorECG-purple.svg)](https://academic.oup.com/ehjdh/advance-article/doi/10.1093/ehjdh/ztac038/6649795?searchresult=1)
 [![DoubleResidual](https://img.shields.io/badge/conference-qLST-blue.svg)](https://arxiv.org/pdf/2111.07386.pdf)
 [![PLN](https://img.shields.io/badge/paper-PLN-purple.svg)](https://www.ahajournals.org/doi/full/10.1161/CIRCEP.120.009056)
    
