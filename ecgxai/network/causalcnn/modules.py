@@ -59,12 +59,14 @@ class CausalConvolutionBlock(torch.nn.Module):
     the input. Outputs a three-dimensional tensor (`B`, `C`, `L`).
 
     Attributes:
-        in_channels: Number of input channels.
-        out_channels: Number of output channels.
-        kernel_size: Kernel size of the applied non-residual convolutions.
-        padding: Zero-padding applied to the left of the input of the
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        kernel_size (int): Kernel size of the applied non-residual convolutions.
+        padding (int): Zero-padding applied to the left of the input of the
            non-residual convolutions.
-        final (bool) Disables, if True, the last activation function.
+        final (bool): Disables, if True, the last activation function.
+        forward (bool): If True ordinary convolutions are used, and otherwise 
+            transposed convolutions will be used.
     """
     def __init__(self, in_channels: int, out_channels: int, kernel_size: int,
                  dilation: int, final=False, forward=True):
@@ -142,7 +144,7 @@ class CausalCNN(torch.nn.Module):
             in_channels_block = in_channels if i == 0 else channels
             layers += [CausalConvolutionBlock(
                 in_channels_block, channels, kernel_size, dilation_size,
-                forward,
+                forward=forward,
             )]
             # double the dilation at each step if forward, otherwise
             # halve the dilation
