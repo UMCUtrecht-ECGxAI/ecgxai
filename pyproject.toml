@@ -1,0 +1,76 @@
+[project]
+name = "ecgxai"
+version = "0.1.1"
+description = "Neatly packaged AI methods for ECG analysis"
+readme = "README.md"
+license = "AGPL-3.0-only"
+requires-python = ">=3.10"
+authors = [
+    { name = "Tim Paquaij", email = "t.m.Paquaij@umcutrecht.nl" },
+]
+
+dependencies = [
+    "numpy>=1.24.2,<2.0",
+    "scipy>=1.10",
+    "pandas>=2.0",
+    "scikit-learn>=1.3",
+    "tqdm>=4.60",
+    "matplotlib>=3.8",
+    "h5py>=3.9",
+    "wfdb>=4.1",
+    "pyedflib>=0.1.42",
+    "xarray>=2024.1",
+    "zarr>=2.18",
+    "opencv-python>=4.8",
+    "protobuf>=4.25",
+    "plotly>=5.18",
+    "ipywidgets>=8.1",
+    "qrcode>=7.4",
+    "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+cpu = [
+    "torch==2.2.2",
+    "torchvision==0.17.2",
+    "torchaudio==2.2.2",
+    "pytorch-lightning>=2.2.0",
+]
+
+cuda121 = [
+    "torch==2.2.2",
+    "torchvision==0.17.2",
+    "torchaudio==2.2.2",
+    "pytorch-lightning>=2.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/rutgervandeleur/ecgxai"
+
+[build-system]
+requires = ["setuptools>=69.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+conflicts = [
+    [
+        { extra = "cpu" },
+        { extra = "cuda121" },
+    ],
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu121", extra = "cuda121" },
+]
+torchvision = [
+    { index = "pytorch-cu121", extra = "cuda121" },
+]
+torchaudio = [
+    { index = "pytorch-cu121", extra = "cuda121" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
