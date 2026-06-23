@@ -31,46 +31,104 @@ dependencies = [
 
 [project.optional-dependencies]
 cpu = [
-    "torch==2.2.2",
-    "torchvision==0.17.2",
-    "torchaudio==2.2.2",
-    "pytorch-lightning>=2.2.0",
+    "torch==2.2.2; python_version == '3.12'",
+    "torchvision==0.17.2; python_version == '3.12'",
+    "torchaudio==2.2.2; python_version == '3.12'",
+    "pytorch-lightning>=2.2.0; python_version == '3.12'",
+    "onnxruntime>=1.20; python_version == '3.12'",
+]
+
+cuda118 = [
+    "torch==2.0.0; python_version == '3.10'",
+    "torchvision==0.15.1; python_version == '3.10'",
+    "torchaudio==2.0.0; python_version == '3.10'",
+    "pytorch-lightning>=2.0.6; python_version == '3.10'",
+    "onnxruntime-gpu>=1.18,<1.27; python_version == '3.10'",
 ]
 
 cuda121 = [
-    "torch==2.2.2",
-    "torchvision==0.17.2",
-    "torchaudio==2.2.2",
-    "pytorch-lightning>=2.2.0",
+    "torch==2.2.2; python_version == '3.12'",
+    "torchvision==0.17.2; python_version == '3.12'",
+    "torchaudio==2.2.2; python_version == '3.12'",
+    "pytorch-lightning>=2.2.0; python_version == '3.12'",
+    "onnxruntime-gpu>=1.20,<1.27; python_version == '3.12'",
 ]
 
-[project.urls]
-Homepage = "https://github.com/rutgervandeleur/ecgxai"
-
 [build-system]
-requires = ["setuptools>=69.0.0", "wheel"]
+requires = [
+    "setuptools>=69.0.0",
+    "wheel"
+]
 build-backend = "setuptools.build_meta"
+
+# -----------------------------
+# uv configuration
+# -----------------------------
 
 [tool.uv]
 conflicts = [
     [
         { extra = "cpu" },
+        { extra = "cuda118" },
         { extra = "cuda121" },
     ],
 ]
 
 [tool.uv.sources]
 torch = [
+    { index = "pytorch-cu118", extra = "cuda118" },
     { index = "pytorch-cu121", extra = "cuda121" },
 ]
+
 torchvision = [
+    { index = "pytorch-cu118", extra = "cuda118" },
     { index = "pytorch-cu121", extra = "cuda121" },
 ]
+
 torchaudio = [
+    { index = "pytorch-cu118", extra = "cuda118" },
     { index = "pytorch-cu121", extra = "cuda121" },
 ]
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
 
 [[tool.uv.index]]
 name = "pytorch-cu121"
 url = "https://download.pytorch.org/whl/cu121"
 explicit = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+fix = true
+
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "W",   # pycodestyle warnings
+    "I",   # import sorting (isort replacement)
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade (bounded by target-version)
+]
+
+ignore = [
+    "E203",  # whitespace before ':'
+    "E266",  # too many leading '#'
+    "E501",  # line length (handled by Black)
+]
+
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["ecgxai"]
+force-sort-within-sections = true
